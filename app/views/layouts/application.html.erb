@@ -11,6 +11,34 @@
   </head>
 
   <body>
+    <header>
+      <ul>
+      <% if customer_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "商品一覧", items_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_customer_session_path, method: :delete do %>
+            ログアウト
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
+            新規登録
+          <% end %>
+        </li>
+        <li>
+          <%= link_to  new_customer_session_path do%>
+            ログイン
+          <% end %>
+        </li>
+      <% end %>
+      <ul>
+    </header>
     <%= yield %>
   </body>
 </html>
