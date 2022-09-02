@@ -14,7 +14,15 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :customers, only: [:show, :edit, :update]
+    # 退会確認画面
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    # 論理削除用のルーティング
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :items, only: [:show, :index]
+  end
+
+  namespace :admin do
+    resources :items, only: [:show, :index, :new, :edit, :create, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

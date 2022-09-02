@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  integer: 
+  string: 
+  string: 
+  text: 
+  integer: 
+  boolean: 
+
+two:
+  integer: 
+  string: 
+  string: 
+  text: 
+  integer: 
+  boolean: 
