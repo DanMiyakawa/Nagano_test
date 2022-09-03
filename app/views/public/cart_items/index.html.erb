@@ -5,7 +5,7 @@
     </div>
     <% unless @cart_items.empty? %>
     <div class="col-sm-2 px-sm-0">
-      <%= link_to "カートを空にする", public_cart_items_destroy_all_path, class: "btn btn-danger float-right", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %>
+      <%= link_to "カートを空にする", public_cart_items_path, class: "btn btn-danger float-right", id: "all-delete", method: :delete, data: { confirm: '削除しますか？' } %>
     </div>
     <% end %>
   </div>
@@ -38,7 +38,7 @@
               <td class="align-middle"><%= image_tag cart_item.item.image %><%= cart_item.item.name %></td>
               <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
               <td class="align-middle">
-                <%= form_with model: cart_item, url: public_cart_items_path, local: true do |f| %>
+                <%= form_with model: cart_item, url: public_cart_items_path do |f| %>
                   <%= f.number_field :amount, in: 1..999, step: 1, id: "amount-number-field-#{i}" %>
                   <%= f.submit "変更", class: "btn btn-success", id: "amount-submit-#{i}" %>
                 <% end %>
