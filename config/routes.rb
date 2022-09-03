@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'cart_items/index'
+  end
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :items, only: [:show, :index]
+    resources :cart_items, only: [:index, :create, :destroy, :update]
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   end
 
   namespace :admin do

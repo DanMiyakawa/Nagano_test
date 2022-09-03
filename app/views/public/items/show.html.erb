@@ -7,3 +7,4 @@
 <p><%= @item.introduction %></p>
 
 <p><%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>
+<p><%= render "item_amount_form", cart_item: @cart_item, item: @item %></p>
