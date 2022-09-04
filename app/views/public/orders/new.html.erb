@@ -1,0 +1,12 @@
+<h2>注文情報入力</h2>
+
+<%= form_with model: @order, url: {controller: 'public/orders', action: 'confirm' },  local:true do |f| %>
+  <div>
+    <h5>支払方法</h5>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+  </div>
+<% end %>
