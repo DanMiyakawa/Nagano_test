@@ -43,8 +43,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
     flash[:success] = "選択いただいたカートを空にしました"
     redirect_back(fallback_location: root_path)
   end

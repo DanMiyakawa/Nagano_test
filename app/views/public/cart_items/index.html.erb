@@ -38,13 +38,13 @@
               <td class="align-middle"><%= image_tag cart_item.item.image %><%= cart_item.item.name %></td>
               <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
               <td class="align-middle">
-                <%= form_with model: cart_item, url: public_cart_item_path(@cart_items), method: :patch, do |f| %>
+                <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
                   <%= f.number_field :amount, in: 1..999, step: 1, id: "amount-number-field-#{i}" %>
                   <%= f.submit "変更", class: "btn btn-success", id: "amount-submit-#{i}" %>
                 <% end %>
               </td>
               <td class="align-middle"><%= (amount = (cart_item.item.add_tax_price * cart_item.amount)).to_s(:delimited) %></td>
-              <td class="align-middle text-center"><%= link_to "削除する", public_cart_item_path(@cart_items), class: "btn btn-danger", id: "cart-item-delete-#{i}", method: :delete, data: { confirm: '削除しますか？' } %></td>
+              <td class="align-middle text-center"><%= link_to "削除する", public_cart_item_path(cart_item.id), class: "btn btn-danger", id: "cart-item-delete-#{i}", method: :delete, data: { confirm: '削除しますか？' } %></td>
             </tr>
             <% @total_amount += amount %>
           <% end %>
