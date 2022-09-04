@@ -1,0 +1,44 @@
+<h2>配送先登録/一覧</h2>
+<%= form_with model: @address, url: public_addresses_path, local: true do |f| %>
+<table>
+  <tr>
+    <div calss="form-group">
+      <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+      <td><%= f.text_field :postal_code, placeholder:"0000000", id: "postal_code" %></td>
+    </div>
+  </tr>
+  <tr>
+    <div calss="form-group">
+      <th><%= f.label :"住所" %></th>
+      <td><%= f.text_field :address, placeholder:"住所を入力してください", :size => "50", id: "customer_address" %></td>
+    </div>
+  </tr>
+  <tr>
+    <div calss="form-group">
+      <th><%= f.label :"宛名" %></th>
+      <td><%= f.text_field :name, placeholder:"名前を入力してください"%></td>
+      <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+    </div>
+  </tr>
+</table>
+<% end %>
+
+<table class="table table-bordered">
+  <thead class="table-active">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛先</th></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
