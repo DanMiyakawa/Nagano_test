@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :items, only: [:show, :index]
+    patch 'public/cart_items' => 'public/cart_items#update'
     resources :cart_items, only: [:index, :create, :destroy, :update] do
       delete "/cart_items/destroy_all" => "cart_items#destroy_all"
     end

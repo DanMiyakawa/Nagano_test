@@ -26,8 +26,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.find(params[:id])
-    if @cart_item.update(cart_item_params)
+    cart_item = CartItem.find(params[:id])
+    if cart_item.update(cart_item_params)
       flash[:success] = "個数を変更しました"
       redirect_back(fallback_location: root_path)
     else
@@ -52,6 +52,6 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 end
