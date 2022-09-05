@@ -27,13 +27,13 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif address_option == 1
+    elsif select_address == 1
       @order = Order.new(order_params)
       @address = ShippingAddress.find(params[:order][:address_id])
-      @order.postal_code = @shipping_address.postal_code
-      @order.address = @shipping_address.address
-      @order.name = @shipping_address.name
-    elsif address_option == 2
+      @order.postal_code = @address.shipping_postal_code
+      @order.address = @address.shipping_address
+      @order.name = @address.shipping_name
+    elsif select_address == 2
       @order = Order.new(order_params)
     else
     end
