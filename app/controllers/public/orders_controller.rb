@@ -40,9 +40,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.find(order_params)
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.shipping_fee = 800
+    @order.shipping_cost = 800
     if @order.save
       @cart_items = CartItem.where(customer_id: current_customer.id)
       @cart_items.each do |cart_item|
@@ -50,18 +50,16 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
-        order_detail.price_including_tax = change_price_excluding_tax(cart_item.item.price_excluding_tax)
-        order_detail.production_status = 0
-        if order_detail.save
-          @cart_items.destroy_all
-        end
+        order_detail.price = @total_billing_amount
+        order_detail.save
       end
-      redirect_to orders_thanks_path
-    else
+        @cart_items.destroy_all
+        redirect_to public_orders_thanks_path
     end
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def thanks
