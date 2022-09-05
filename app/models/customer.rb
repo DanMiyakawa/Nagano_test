@@ -8,6 +8,10 @@ class Customer < ApplicationRecord
    has_many :shipping_address, dependent: :destroy
    has_many :orders, dependent: :destroy
 
+  def address_display
+    '〒' + postal_code + ' ' + address + ' ' + full_name
+  end
+
   def active_for_authentication?
     super && (is_deleted == false)
   end

@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/index'
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/show'
-    get 'orders/thanks'
-  end
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -30,6 +23,9 @@ Rails.application.routes.draw do
       delete "/cart_items/destroy_all" => "cart_items#destroy_all"
     end
     resources :shipping_addresses, only: [:index, :edit, :update, :create, :destroy]
+    resources :orders, only: [:index, :new, :create, :show]
+    post "/orders/confirm" => "orders#confirm"
+    get "/orders/thanks" => "orders#thanks"
   end
 
   namespace :admin do
