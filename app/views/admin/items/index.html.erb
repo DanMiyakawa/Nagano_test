@@ -17,7 +17,7 @@
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
-        <td>ジャンル</td>
+        <td><%= item.genre_id %></td>
         <td>ステータス</td>
       </tr>
     <% end %>

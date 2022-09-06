@@ -13,6 +13,10 @@
       <th><%= @item.introduction %></th>
     </tr>
     <tr>
+      <th>ジャンル</th>
+      <th><%= @item.genre.name %></th>
+    </tr>
+    <tr>
       <th>税込価格<br>(税抜価格)</th>
       <th><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</th>
     </tr>
