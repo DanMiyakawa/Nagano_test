@@ -1,4 +1,4 @@
-<h2>プロフィール編集</h2>
+<h2>会員情報編集</h2>
 
 <%= form_with model: @customer, url: public_customer_path, local:true do |f| %>
   <div class="field">
@@ -38,7 +38,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "編集内容を保存" %>
   </div>
   <%= link_to "退会する", public_unsubscribe_path %>
 <% end %>

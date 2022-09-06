@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root to: 'homes#top'
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -9,10 +10,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  root to: 'homes#top'
-  get 'homes/about', as: 'about'
+
 
   namespace :public do
+    root to: 'homes#top'
+    get 'homes/about', as: 'about'
     resources :customers, only: [:show, :edit, :update]
     # 退会確認画面
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
