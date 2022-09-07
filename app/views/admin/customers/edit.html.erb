@@ -1,24 +1,25 @@
-<h2>会員情報編集</h2>
+<h2><%= @customer.full_name1 %>さんの会員情報編集</h2>
 
-<%= form_with model: @customer, url: public_customer_path, local:true do |f| %>
+<%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+  <div>
+    会員ID
+    <%= @customer.id %>
+  </div>
+
   <div class="field">
-      <%= f.label "お名前" %>
-      <%= f.label "(姓)" %>
+      <%= f.label "氏名" %>
       <%= f.text_field :last_name, :size => "10", placeholder: @customer.last_name %>
-      <%= f.label "(名)" %>
       <%= f.text_field :first_name, :size => "10", placeholder: @customer.first_name %>
   </div>
 
   <div class="field">
       <%= f.label "フリガナ" %>
-      <%= f.label "(セイ)" %>
       <%= f.text_field :last_name_kana, :size => "10", placeholder: @customer.last_name_kana %>
-      <%= f.label "(メイ)" %>
       <%= f.text_field :first_name_kana, :size => "10", placeholder: @customer.first_name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label "郵便番号（ハイフンなし）" %>
+    <%= f.label "郵便番号" %>
     <%= f.text_field :postal_code, autofocus: true, autocomplete: @customer.postal_code %>
   </div>
 
@@ -28,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "電話番号（ハイフンなし）" %>
+    <%= f.label "電話番号" %>
     <%= f.text_field :telephone_number, autofocus: true, autocomplete: @customer.telephone_number %>
   </div>
 
@@ -37,9 +38,16 @@
     <%= f.email_field :email, autofocus: true, autocomplete: @customer.email %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "編集内容を保存" %>
+  <div class="field">
+    <%= f.label "会員ステータス" %>
+    <%= f.radio_button :is_deleted, false %>
+    <%= f.label :is_deleted, "有効" %>
+
+    <%= f.radio_button :is_deleted, true %>
+    <%= f.label :is_deleted, "退会" %>
   </div>
-  <%= link_to "退会する", public_unsubscribe_path %>
+  <div class="actions">
+    <%= f.submit "変更を保存" %>
+  </div>
 <% end %>
 
