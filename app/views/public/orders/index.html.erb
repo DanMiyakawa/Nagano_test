@@ -22,7 +22,7 @@
                 <% end %>
                 </td>
                 <td class="align-middle"><%= "#{order.total_payment}円" %></td>
-                <td class="align-middle">ステータス</td>
+                <td class="align-middle"><%= order.order_status %></td>
                 <td class="align-middle"><%= link_to "表示する", public_order_path(order), class: "btn btn-primary"  %></td>
             </tr>
          <% end %>
