@@ -1,5 +1,7 @@
 <h2>商品一覧</h2>
-<%= link_to "商品登録", new_admin_item_path %>
+<%= link_to new_admin_item_path do %>
+  <button type="button" class="btn btn-Light shadow rounded-circle p-0 ml-auto font-weight-bold" style="width:2rem;height:2rem;">＋</button>
+<% end %>
 <table class='table'>
   <thead>
     <tr>

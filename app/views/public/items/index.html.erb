@@ -2,9 +2,9 @@
 <% @items.each do |item| %>
 <div>
   <%= link_to public_item_path(item.id) do %>
-  <%= image_tag item.image, size: "30×50" %><br>
+  <%= image_tag item.image.variant( resize: "200x150!" ) %><br>
   <%= item.name %><br>
-  <%= item.price %>
+  ￥<%= item.price.to_s(:delimited) %>
   <% end %>
 </div>
 <% end %>
