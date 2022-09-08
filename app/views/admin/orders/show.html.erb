@@ -50,7 +50,13 @@
       <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
       <td><%= order_detail.amount %></td>
       <td><%= (amount = (order_detail.item.add_tax_price * order_detail.amount)).to_s(:delimited) %></td>
-      <td>ステータス</td>
+      <td>
+        <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+          <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
+          <%= f.select :production_status, OrderDetail.making_statuses.keys %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
