@@ -1,46 +1,50 @@
-<h2><%= @customer.full_name1 %>さんの会員詳細</h2>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th><%= @customer.id %></th>
-  </tr>
-  <tr>
-	  <th>氏名</th>
-	  <th><%= @customer.full_name %></th>
-  </tr>
-  <tr>
-	  <th>カナ</th>
-	  <th><%= @customer.full_name_kana %></th>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <th><%= @customer.postal_code %></th>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <th><%= @customer.address %></th>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <th><%= @customer.telephone_number %></th>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <th><%= @customer.email %></th>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <th><% if @customer.is_deleted == false %>
-            <p>有効</p>
-          <% else %>
-            <p>退会</p>
-          <% end %>
-    </th>
-  </tr>
-</table>
-
-<div>
-  <p><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 px-0 mx-auto">
+      <h4 class="my-3"><%= @customer.full_name1 %>さんの会員詳細</h4>
+      <table class="table table-borderless">
+        <tr>
+          <th>会員ID</th><td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+	        <td><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+	        <th>カナ</th>
+	        <td><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @customer.is_deleted == false  %>
+              <p class="text-success font-weight-bold">有効</p>
+            <% else %>
+              <p class="text-secondary font-weight-bold">退会</p>
+            <% end %>
+          <td>
+        </tr>
+      </table>
+      <div class="col-4 mx-auto">
+        <%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success m-2" %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
