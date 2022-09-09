@@ -1,5 +1,6 @@
 <h2>配送先編集</h2>
 
+<div class="col-8 mx-auto">
 <%= form_with model: @shipping_address, url: public_shipping_address_path(@shipping_address), local: true do |f| %>
   <table>
     <tr>
@@ -23,3 +24,4 @@
     </tr>
   </table>
 <% end %>
+</div>

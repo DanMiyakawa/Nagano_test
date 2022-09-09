@@ -1,5 +1,6 @@
-注文履歴詳細画面
-
+<p="active">注文履歴詳細画面</p>
+<div class="col-11">
+<div class="col-8">
 <p>注文情報</p>
     <table class="table table-bordered">
         <tr><th class="table-active">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
@@ -7,14 +8,19 @@
         <tr><th class="table-active">支払い方法</th><td><%= @order.payment_method_i18n %></td></tr>
         <tr><th class="table-active">ステータス</th><td><%= @order.order_status %></td></tr>
     </table>
+</div>
 
+<div class="col-3 ml-auto">
 <p>請求情報</p>
     <table class="table table-bordered">
         <tr><th class="table-active">送料</th><td>800</td></tr>
         <tr><th class="table-active">商品合計</th><td><%= @order.total_payment - 800 %></td></tr>
         <tr><th class="table-active">請求合計</th><td><%= @order.total_payment %></td></tr>
     </table>
+</div>
+</div>
 
+<div class="col-11 mx-auto">
 <p>注文内容</p>
     <table class="table table-bordered">
         <thead>
@@ -36,3 +42,4 @@
         <% end %>
         </tbody>
     </table>
+</div>

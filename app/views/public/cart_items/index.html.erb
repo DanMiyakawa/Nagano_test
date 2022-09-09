@@ -35,7 +35,7 @@
             <% @total_amount = 0 %>
             <% @cart_items.each.with_index(1) do |cart_item, i| %>
               <tr>
-                <td class="align-middle"><%= image_tag cart_item.item.image %><%= cart_item.item.name %></td>
+                <td class="align-middle"><%= image_tag cart_item.item.image.variant( resize: "50x40" ) %><%= cart_item.item.name %></td>
                 <td class="align-middle"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
                 <td class="align-middle">
                 <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
