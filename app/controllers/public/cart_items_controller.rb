@@ -3,6 +3,8 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def create

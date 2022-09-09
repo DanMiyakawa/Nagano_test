@@ -1,6 +1,8 @@
 class Public::ShippingAddressesController < ApplicationController
 
   def index
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
     @shipping_address = ShippingAddress.new
     @customer = current_customer
     @shipping_addresses = @customer.shipping_address
@@ -22,6 +24,8 @@ class Public::ShippingAddressesController < ApplicationController
 
   def edit
     @shipping_address = ShippingAddress.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def update

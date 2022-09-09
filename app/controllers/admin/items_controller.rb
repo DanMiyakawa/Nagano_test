@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def create
@@ -15,10 +16,14 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def edit
     @item = Item.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def update

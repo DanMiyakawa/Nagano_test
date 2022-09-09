@@ -1,6 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def update

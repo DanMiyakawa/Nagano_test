@@ -2,6 +2,8 @@ class Admin::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def create
@@ -15,6 +17,8 @@ class Admin::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def update

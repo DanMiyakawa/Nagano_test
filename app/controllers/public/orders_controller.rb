@@ -11,14 +11,20 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def new
     @order = Order.new
     @shipping_address = current_customer.shipping_address
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def confirm
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
     @cart_items = CartItem.where(customer_id: current_customer.id)
     customer = current_customer
     select_address = params[:order][:select_address].to_i
@@ -60,9 +66,13 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   def thanks
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   private

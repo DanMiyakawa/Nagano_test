@@ -1,11 +1,15 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    @genres = Genre.all
   end
 
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   private
