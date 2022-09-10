@@ -33,13 +33,12 @@
               <td>
                 <%= item.genre.name %>
               </td>
-              <td>
               <td><% if item.is_active == true %>
                     <p class="text-success font-weight-bold">販売中</p>
                   <% else %>
                     <p class="text-danger font-weight-bold">販売停止中</p>
                   <% end %>
-              <td>
+              </td>
             </tr>
           <% end %>
         </tbody>
