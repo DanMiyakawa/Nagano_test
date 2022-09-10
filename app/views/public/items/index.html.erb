@@ -3,15 +3,15 @@
     <div class="col-xs-2">
       <%= render "sidebar", genres: @genres %>
     </div>
-    <div class="row mx-auto">
-      <h3 class="mx-5 mt-5">商品一覧</h3>
+
+      <h3 class="mx-5 mt-5">商品一覧(全<%= @items.count %>件)</h3>
         <% @items.each do |item| %>
-          <%= link_to public_item_path(item.id) , class: "col-3 text-center text-dark text-nowrap" do %>
+          <%= link_to public_item_path(item.id) , class: "col-3 text-center text-dark" do %>
             <%= image_tag item.image.variant( resize: "125x125" ) %><br>
             <%= item.name %></br>
             ￥<%= item.price.to_s(:delimited) %>
           <% end %>
       <% end %>
-    </div>
+
   </div>
 </div>
