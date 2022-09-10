@@ -15,11 +15,8 @@
       </tbody>
     </table>
   </div>
-
-    <div class="col-xs-9 col-xs-offset-1">
-        <h3 class="mx-5 mt-5">商品一覧(全<%= @items.count %>件)</h3></br>
-    </div>
     <div class="row mx-auto">
+      <h3 class="mx-5 mt-5">商品一覧</h3>
       <% @items.each do |item| %>
           <%= link_to public_item_path(item.id) , class: "col-3 text-center text-dark text-nowrap" do %>
             <%= image_tag item.image.variant( resize: "125x125" ) %></br>
