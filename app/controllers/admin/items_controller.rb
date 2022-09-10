@@ -38,6 +38,8 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
     @genres = Genre.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   private

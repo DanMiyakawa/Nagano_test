@@ -16,7 +16,7 @@
         <div class="container">
           <a class="navbar-brand p-3" href="/">Nagano_cake</a>
           <% if customer_signed_in? %>
-          <p class="mx-auto p-7">ようこそ、<%= current_customer.last_name %>さん！</p>
+          <p class="text-center">ようこそ、<%= current_customer.last_name %>さん！</p>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
