@@ -1,6 +1,22 @@
-<div class="container">
+<div class="container px-5 px-sm-0'">
   <div class="row">
-    <div class="col-9 px-0 mx-auto">
+    <div class='col-md-3'>
+      <table class="table table-bordered table-hover text-center ec-genre-list" >
+        <thead>
+          <th>ジャンル検索</th>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre.name, public_genre_path(genre.id), class:"ec-genre-list-item"%>
+          </td>
+        </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-md-8 offset-md-1'>
       <div>
         <h2 class="text-center">ようこそ、ながのCAKEへ！</h2></br>
         <h4 class="text-center">

@@ -10,6 +10,7 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
+    @genres = Genre.all
   end
 
   private

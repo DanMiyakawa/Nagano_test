@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get "/orders/thanks" => "orders#thanks"
     post "/orders/confirm" => "orders#confirm"
     resources :orders, only: [:index, :new, :create, :show]
+    resources :genres, only: [:show]
   end
 
   namespace :admin do

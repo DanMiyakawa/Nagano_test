@@ -12,7 +12,7 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffedcc;">
         <div class="container">
           <a class="navbar-brand p-3" href="/">Nagano_cake</a>
           <% if customer_signed_in? %>
@@ -73,7 +73,7 @@
           </div>
         </div>
       </nav>
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav text-right" style="background-color:#ffedcc;">
       <% if customer_signed_in? %>
       <li class="nav-item">
       <%= search_form_for @q, url: public_items_path  do |f| %>
@@ -97,5 +97,7 @@
       <p id="notice"><%= notice %></p>
     <%= yield %>
     </main>
+    <footer  class="fixed-bottom" style="height:50px; background-color: #ffedcc;">
+    </footer>
   </body>
 </html>
