@@ -9,8 +9,8 @@
         <% @items.each do |item| %>
           <%= link_to public_item_path(item.id), class: "col-3 text-center text-dark text-nowrap" do %>
             <%= image_tag item.image.variant( resize: "200x150" ) %><br>
-            <%= item.name %>
-            ￥<%= item.price.to_s(:delimited) %>
+            <%= item.name %><br>
+            ￥<%= item.price.to_s(:delimited) %><
           <% end %>
         <% end %>
      </div>
