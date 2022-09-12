@@ -1,17 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
+<div class='container'>
+    <div class='row'>
+    <div class="col-md-2">
       <%= render "sidebar", genres: @genres %>
     </div>
+    <div class="col-md-10">
+      <h4><strong>商品一覧</strong><span class="font">(全<%= @items.count %>件)</span></h4>
 
-      <h3 class="mx-5 mt-5">商品一覧(全<%= @items.count %>件)</h3>
         <% @items.each do |item| %>
-          <%= link_to public_item_path(item.id) , class: "col-3 text-center text-dark" do %>
-            <%= image_tag item.image.variant( resize: "125x125" ) %><br>
-            <%= item.name %></br>
-            ￥<%= item.price.to_s(:delimited) %>
+        <div class="col-xs-3 mt-3 mx-3 product-photo">
+          <div class="mx-auto imgWrap">
+          <%= link_to public_item_path(item.id) do %>
+            <%= image_tag item.image.variant( resize: "200x150" ) %><br>
+            <%= item.name %>
           <% end %>
+            </div>
+            ￥<%= item.price.to_s(:delimited) %>
       <% end %>
-
+     </div>
+    </div>
   </div>
 </div>
