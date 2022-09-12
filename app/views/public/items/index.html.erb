@@ -5,18 +5,14 @@
     </div>
     <div class="col-md-10">
       <h4><strong>商品一覧</strong><span class="font">(全<%= @items.count %>件)</span></h4>
-      <div class="row">
+      <div class="row mx-auto">
         <% @items.each do |item| %>
-        <div class="col-xs-3 mt-3 mx-3 product-photo">
-          <div class="mx-auto imgWrap">
-          <%= link_to public_item_path(item.id) do %>
+          <%= link_to public_item_path(item.id), class: "col-3 text-center text-dark text-nowrap" do %>
             <%= image_tag item.image.variant( resize: "200x150" ) %><br>
             <%= item.name %>
-          <% end %>
-          </div>
             ￥<%= item.price.to_s(:delimited) %>
-      <% end %>
-      </div>
+          <% end %>
+        <% end %>
      </div>
     </div>
   </div>
