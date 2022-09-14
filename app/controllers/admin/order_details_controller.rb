@@ -1,21 +1,18 @@
 class Admin::OrderDetailsController < ApplicationController
 
   def update
-    @order = Order.find(params[:id])
-    @order_detail = OrderDetail.find(params[:order_detail][:order_detail_id])
+    @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
     if @order_detail.update(making_status_params)
-      if @order.order_details.pluck(:making_status).include?("製作中")
-         @order.order_status = 2
-         @order.save
-      elsif
-        @order.order_details.pluck(:making_status).all?{|status|status == "製作完了"}
-        @order.order_status = 3
-        @order.save
+      if @order.order_details.any?{|order_detail| order_detail.making_status == "製作中"}
+        @order.update(order_status: "製作中")
       end
-    flash[:success] = "制作ステータスを変更しました。"
-    redirect_to admin_order_path(@order)
+      if @order.order_details.all?{|order_detail| order_detail.making_status == "製作完了"}
+        @order.update(order_status: "発送準備中")
+      end
+      redirect_to admin_order_path(@order_detail.order)
     else
-      redirect_back(fallback_location: root_path)
+      render admin_order_path
     end
   end
 
